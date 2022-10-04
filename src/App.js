@@ -1,9 +1,10 @@
 import './App.css';
+import RobotsTable from './components/RobotsTable';
 
 function App() {
   return (
-    <div className="App">
-      
+    <div className="App flex-col">
+      <RobotsTable />
     </div>
   );
 }
