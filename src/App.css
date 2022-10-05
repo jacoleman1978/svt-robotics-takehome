@@ -69,7 +69,8 @@
 }
 
 .active-sort {
-  background-color: lightcoral;
+  background-color: lightgreen;
+  border-radius: 0.5rem;
 }
 
 .inactive-sort {
@@ -79,4 +80,5 @@
 .inactive-sort:hover {
   background-color:lightcoral;
   cursor: pointer;
+  border-radius: 0.5rem;
 }
