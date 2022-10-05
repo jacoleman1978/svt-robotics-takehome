@@ -49,3 +49,34 @@
 .xs-padding {
   padding: 0.1rem 0rem;
 }
+
+.flex-row-centered {
+  display: flex;
+  flex-direction: row;
+}
+
+.no-padding-left-right {
+  padding-left: 0rem;
+  padding-right: 0rem;
+}
+
+.sm-gap {
+  gap: 0.5rem;
+}
+
+.no-border {
+  border: none;
+}
+
+.active-sort {
+  background-color: lightcoral;
+}
+
+.inactive-sort {
+  background-color: white;
+}
+
+.inactive-sort:hover {
+  background-color:lightcoral;
+  cursor: pointer;
+}
