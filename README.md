@@ -18,13 +18,31 @@ There are three different sections of data in the table: Robot Id, Battery % and
 ## Suggested Features to Add
 
 * Allow sorting by more than one column/attribute
+    * Decide if there is a maximum number of concurrent sorts that can happen
+    * Maintain state of which sorting arrows are active
+    * Ensure that only of of each pair of arrows can be active at a time
+    * In the current sorting function, instead of marking the second of two matching items as less than the first, perform another sort on the next column
 * Make filterable by each of the individual attributes
+    * Use current logic for filtering by robotId, except since the other columns are int types, remove the preceding zeros used for robotId
 * Make filterable by multiple attributes
+    * Create a subset of robots based on the first search field
+    * Search the subset on the next search field, repeating for all populated search fields
 * Add individual robots to different groups/tags/categories
+    * Add a property stored in the API
+    * Make a setting or option to add a column with that data to the table
 * Allow sorting by groups/tags/categories
+    * Sorting would be done by adding the sorting arrows to the column header when the column is displayed
 * Make filterable by groups/tags/categories
+    * Make a dropdown list in the filter section of the webpage that allows multiple selections
+    * Filtering would be accomplished in the same manner as the other attributes
 * Add description labels and other details that can be viewed by clicking on a robot row
+    * Add a description or notes section as a property for each robot in the API
+    * Details could include: the function of the robot, the last time it was calibrated or underwent maintainance, etc.
 * Add pagination with a dropdown selection of the number to be displayed per page
+    * Have a dropdown option select with numbers of robots to display per page: 25, 50, 100, etc.
+    * Take the number of robots listed after any applied filters and divide it by the number to display per page, rounding up.
+    * Add a counter that keeps track of how many robots have been printed on a page, so it knows when to stop
+    * Use the number displayed per page and the current page to determine the indices to use for display.
 
 ## Getting Started with Create React App
 
