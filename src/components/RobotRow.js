@@ -15,7 +15,7 @@ const RobotRow = ({filteredRobotData, setRobotFilter, rowNum}) => {
 
 
     return (
-        <div key={filteredRobotData.robotId} className={(rowNum + 1) % 5 == 0 ? "flex-row table-divider" : "flex-row"}>
+        <div key={filteredRobotData.robotId} className={(rowNum + 1) % 5 === 0 ? "flex-row table-divider" : "flex-row"}>
             <Form.Check 
                 className="flex-row-condensed centered xlg-padding-left"
                 type="switch"
