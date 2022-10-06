@@ -1,17 +1,17 @@
 import { useState, useEffect } from "react";
 import RobotRow from "./RobotRow";
 
-const RobotsTableBody = ({robotData, sortedToggle}) => {
+const RobotsTableBody = ({filteredRobotData, sortedToggle, setRobotFilter}) => {
     const [rowDisplay, setRowDisplay] = useState([]);
-
+    
     useEffect(() => {
-        const newDisplay = robotData.map((robot) => {
+        const newDisplay = filteredRobotData.map((robot) => {
             return (
-                <RobotRow key={robot.robotId} robotData={robot} />
+                <RobotRow key={robot.robotId} filteredRobotData={robot} setRobotFilter={setRobotFilter} />
             )
         })
         setRowDisplay(newDisplay);
-    }, [robotData, sortedToggle])
+    }, [filteredRobotData, sortedToggle, setRobotFilter])
 
     return (
         <div className="flex-col xs-padding">
