@@ -3,6 +3,7 @@
 The assessment was to use the provided API to display all of the robots in a webpage in a tabular format. 
 
 Required functionality:
+
 *Filterable by robotId
 *Sortable by all attributes: robotId, batteryLevel, y, x
 
