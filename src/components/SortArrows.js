@@ -1,7 +1,10 @@
 import { useMemo } from "react";
+
 import getSortArrowClasses from "./helpers/getSortArrowClasses";
 
+// Pairs up and down arrows for sorting, and sets the type and direction for sorting
 const SortArrows = ({type, sortOnColumn, setSortOnColumn, sortDirection, setSortDirection}) => {
+    // Adds a colored background for the active arrow used for sorting and removes all other arrow background color
     const {classStringUp, classStringDown} = useMemo(() => getSortArrowClasses(type, sortOnColumn, sortDirection), [type, sortOnColumn, sortDirection]);
 
     const handleClickDown = (type) => {

@@ -1,7 +1,10 @@
 import { Form } from "react-bootstrap"
+
 import updateFilterLists from "./helpers/updateFilterLists"
 
+// For individual robot objects, displays a filter switch and values for each column
 const RobotRow = ({filteredRobotData, setRobotFilter}) => {
+    // Maintains the robotFilter object, based on the state of the switch
     const handleFilterSwitch = (e) => {
         if (e.target.checked) {
             setRobotFilter(robotFilter => updateFilterLists(robotFilter, "visible", filteredRobotData.robotId));
@@ -10,7 +13,7 @@ const RobotRow = ({filteredRobotData, setRobotFilter}) => {
         }
     }
     return (
-        <div className="flex-row">
+        <div key={filteredRobotData.robotId} className="flex-row">
             <Form.Check 
                 className="flex-row-condensed centered xlg-padding-left"
                 type="switch"

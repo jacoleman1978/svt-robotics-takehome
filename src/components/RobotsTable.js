@@ -1,37 +1,44 @@
 import { useState, useEffect } from "react";
+
 import RobotsTableHeader from "./RobotsTableHeader";
 import RobotsTableBody from "./RobotsTableBody";
-import FilterByRobotIdBtns from "./FilterByRobotIdBtns";
+import FilterRobots from "./FilterRobots";
+
 import getDataFromAPI from "./helpers/getRobotData";
 import getSortedRobots from "./helpers/getSortedRobots";
 
+// React component container for "Filter Robots", robot table header and robot table body
 const RobotsTable = () => {
     const [robotData, setRobotData] = useState([]);
+    const [robotFilter, setRobotFilter] = useState({visible: [], hidden: []});
+    const [filteredRobotData, setFilteredRobotData] = useState([]);
+
     // sortOnColumn possible values: "robotId", "batteryLevel", "x", "y"
     const [sortOnColumn, setSortOnColumn] = useState("robotId");
     // sortDirection possible values: "ascending", "descending"
     const [sortDirection, setSortDirection] = useState("ascending");
     const [sortedToggle, setSortedToggle] = useState(true);
+
     const [removeUnselectedBtn, setRemoveUnselectedBtn] = useState(false);
     const [displayAllBtn, setDisplayAllBtn] = useState(false);
-    const [robotFilter, setRobotFilter] = useState({visible: [], hidden: []});
-    const [filteredRobotData, setFilteredRobotData] = useState([]);
 
-    const apiURL = "https://60c8ed887dafc90017ffbd56.mockapi.io/robots"
-
+    // On first load, fetch API data and add isDisplayed: true to each robotData object
     useEffect(() => {
+        const apiURL = "https://60c8ed887dafc90017ffbd56.mockapi.io/robots"
         getDataFromAPI(apiURL).then(response => {
             response.forEach(robot => robot["isDisplayed"] = true )
-            setRobotData(response)
-            setFilteredRobotData(response)
+            setRobotData([...response])
+            setFilteredRobotData([...response])
         })
     }, [])
 
+    // Apply sorting to the filteredRobotData depending on column and direction sorted
     useEffect(() => {
         setFilteredRobotData(filteredRobotData => getSortedRobots(filteredRobotData, sortOnColumn, sortDirection));
         setSortedToggle(sortedToggle => !sortedToggle);
     }, [sortOnColumn, sortDirection])
 
+    // Update filteredRobotData when the "Remove Unselected" button is clicked
     useEffect(() => {
         if (removeUnselectedBtn) {
             let updatedDisplay = filteredRobotData.map(robot => {
@@ -49,6 +56,7 @@ const RobotsTable = () => {
         }
     }, [removeUnselectedBtn, filteredRobotData, robotFilter])
 
+    // Display all robots when the "Display All" button is clicked
     useEffect(() => {
         if (displayAllBtn) {
             setRobotFilter(robotFilter => {
@@ -60,6 +68,7 @@ const RobotsTable = () => {
         }
     }, [displayAllBtn, robotData])
 
+    // Update the robotFilter
     useEffect(() => {
         let visibleList = [];
         let hiddenList = [];
@@ -72,14 +81,16 @@ const RobotsTable = () => {
             }
         })
 
-        setRobotFilter({visible: visibleList, hidden: hiddenList})
+        setRobotFilter({visible: visibleList, hidden: hiddenList});
     }, [filteredRobotData])
 
     return (
         <>
-            <FilterByRobotIdBtns 
+            <FilterRobots 
                 setRemoveUnselectedBtn={setRemoveUnselectedBtn} 
                 setDisplayAllBtn={setDisplayAllBtn} 
+                setFilteredRobotData={setFilteredRobotData}
+                setRobotFilter={setRobotFilter}
             />
             <RobotsTableHeader 
                 sortOnColumn={sortOnColumn} 

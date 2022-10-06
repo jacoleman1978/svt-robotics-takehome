@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
+
 import RobotRow from "./RobotRow";
 
+// Displays rows for each robot in the filteredRobotData array
 const RobotsTableBody = ({filteredRobotData, sortedToggle, setRobotFilter}) => {
     const [rowDisplay, setRowDisplay] = useState([]);
     
@@ -14,8 +16,8 @@ const RobotsTableBody = ({filteredRobotData, sortedToggle, setRobotFilter}) => {
     }, [filteredRobotData, sortedToggle, setRobotFilter])
 
     return (
-        <div className="flex-col xs-padding">
-            {rowDisplay}
+        <div className={rowDisplay.length > 0 ? "flex-col xs-padding" : "flex-row centered xlg-padding bold-red-text"}>
+            {rowDisplay.length > 0 ? rowDisplay : <div className="row-flex">No Matching Robots Found</div>}
         </div>
     )
 }

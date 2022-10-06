@@ -1,5 +1,6 @@
 import SortArrows from "./SortArrows";
 
+// Robot data table headers, inclduding sorting arrows for each column
 const RobotsTableHeader = (props) => {
     return (
         <div className="flex-row bottom-center">
