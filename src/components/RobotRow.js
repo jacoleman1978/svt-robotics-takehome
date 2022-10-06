@@ -3,7 +3,7 @@ import { Form } from "react-bootstrap"
 import updateFilterLists from "./helpers/updateFilterLists"
 
 // For individual robot objects, displays a filter switch and values for each column
-const RobotRow = ({filteredRobotData, setRobotFilter}) => {
+const RobotRow = ({filteredRobotData, setRobotFilter, rowNum}) => {
     // Maintains the robotFilter object, based on the state of the switch
     const handleFilterSwitch = (e) => {
         if (e.target.checked) {
@@ -12,8 +12,10 @@ const RobotRow = ({filteredRobotData, setRobotFilter}) => {
             setRobotFilter(robotFilter => updateFilterLists(robotFilter, "hidden", filteredRobotData.robotId));
         }
     }
+
+
     return (
-        <div key={filteredRobotData.robotId} className="flex-row">
+        <div key={filteredRobotData.robotId} className={(rowNum + 1) % 5 == 0 ? "flex-row table-divider" : "flex-row"}>
             <Form.Check 
                 className="flex-row-condensed centered xlg-padding-left"
                 type="switch"
@@ -35,6 +37,7 @@ const RobotRow = ({filteredRobotData, setRobotFilter}) => {
                     {filteredRobotData.y}
                 </div>
             </div>
+            
         </div>
     )
 }

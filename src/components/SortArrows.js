@@ -18,7 +18,7 @@ const SortArrows = ({type, sortOnColumn, setSortOnColumn, sortDirection, setSort
     }
 
     return (
-        <div className="flex-row-centered">
+        <div className="flex-row-centered sm-padding-left">
             <button onClick={() => handleClickDown(type)} className={classStringDown}><i className="fa-solid fa-arrow-down-long"></i></button>
             <button onClick={() => handleClickUp(type)}  className={classStringUp}><i className="fa-solid fa-arrow-up-long"></i></button>
         </div>

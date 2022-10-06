@@ -7,9 +7,9 @@ const RobotsTableBody = ({filteredRobotData, sortedToggle, setRobotFilter}) => {
     const [rowDisplay, setRowDisplay] = useState([]);
     
     useEffect(() => {
-        const newDisplay = filteredRobotData.map((robot) => {
+        const newDisplay = filteredRobotData.map((robot, i) => {
             return (
-                <RobotRow key={robot.robotId} filteredRobotData={robot} setRobotFilter={setRobotFilter} />
+                <RobotRow key={robot.robotId} filteredRobotData={robot} setRobotFilter={setRobotFilter} rowNum={i}/>
             )
         })
         setRowDisplay(newDisplay);

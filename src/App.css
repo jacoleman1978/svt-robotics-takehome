@@ -1,5 +1,6 @@
 .App {
-  margin: 1rem;
+  padding: 1rem;
+  background-color: antiquewhite;
 }
 
 .flex-col {
@@ -34,6 +35,12 @@
   border-bottom: solid black 1px;
   padding: 0.5rem 0rem;
   margin-bottom: 0.5rem;
+}
+
+.table-divider {
+  border-bottom: solid black 1px;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .med-border {
@@ -90,7 +97,7 @@
 }
 
 .inactive-sort {
-  background-color: white;
+  background-color: antiquewhite;
 }
 
 .inactive-sort:hover {
@@ -134,4 +141,26 @@
   font-weight: bold;
   color: red;
   font-style: italic;
+}
+
+.top-border-radius {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+.left-border-radius {
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+.bottom-r-border-radius {
+  border-bottom-right-radius: 0.5rem;
+}
+
+.sm-padding-left {
+  padding-left: 0.1rem;
+}
+
+.sm-font-size {
+  font-size: small;
 }

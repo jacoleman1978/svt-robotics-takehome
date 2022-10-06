@@ -19,7 +19,7 @@ const RobotsTable = () => {
     const [sortDirection, setSortDirection] = useState("ascending");
     const [sortedToggle, setSortedToggle] = useState(true);
 
-    const [removeUnselectedBtn, setRemoveUnselectedBtn] = useState(false);
+    const [updateSelectedBtn, setUpdateSelectedBtn] = useState(false);
     const [displayAllBtn, setDisplayAllBtn] = useState(false);
 
     // On first load, fetch API data and add isDisplayed: true to each robotData object
@@ -38,9 +38,9 @@ const RobotsTable = () => {
         setSortedToggle(sortedToggle => !sortedToggle);
     }, [sortOnColumn, sortDirection])
 
-    // Update filteredRobotData when the "Remove Unselected" button is clicked
+    // Update filteredRobotData when the "Update Selected" button is clicked
     useEffect(() => {
-        if (removeUnselectedBtn) {
+        if (updateSelectedBtn) {
             let updatedDisplay = filteredRobotData.map(robot => {
                 if (robotFilter.visible.includes(robot.robotId)) {
                     robot.isDisplayed = true;
@@ -52,9 +52,9 @@ const RobotsTable = () => {
 
             setFilteredRobotData(() => updatedDisplay.filter(robot => robot.isDisplayed))
 
-            setRemoveUnselectedBtn(false);
+            setUpdateSelectedBtn(false);
         }
-    }, [removeUnselectedBtn, filteredRobotData, robotFilter])
+    }, [updateSelectedBtn, filteredRobotData, robotFilter])
 
     // Display all robots when the "Display All" button is clicked
     useEffect(() => {
@@ -87,7 +87,7 @@ const RobotsTable = () => {
     return (
         <>
             <FilterRobots 
-                setRemoveUnselectedBtn={setRemoveUnselectedBtn} 
+                setUpdateSelectedBtn={setUpdateSelectedBtn} 
                 setDisplayAllBtn={setDisplayAllBtn} 
                 setFilteredRobotData={setFilteredRobotData}
                 setRobotFilter={setRobotFilter}

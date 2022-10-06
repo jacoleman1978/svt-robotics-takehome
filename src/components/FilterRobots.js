@@ -4,8 +4,8 @@ import { Form, Button } from "react-bootstrap";
 import convertFilterById from "./helpers/convertFilterById";
 import updateFilterLists from "./helpers/updateFilterLists";
 
-// React component container for "Robot Ids:" text input filter field, "Remove Unselected" button and "Display All" button
-const FilterRobots = ({setRemoveUnselectedBtn, setDisplayAllBtn, setFilteredRobotData, setRobotFilter}) => {
+// React component container for "Robot Ids:" text input filter field, "Update Selected" button and "Display All" button
+const FilterRobots = ({setUpdateSelectedBtn, setDisplayAllBtn, setFilteredRobotData, setRobotFilter}) => {
     const [idsToDisplay, setIdsToDisplay] = useState("");
 
     // Updates the filteredRobotData array using the "Robot Ids:" field after the "Display" button is clicked
@@ -38,8 +38,8 @@ const FilterRobots = ({setRemoveUnselectedBtn, setDisplayAllBtn, setFilteredRobo
             </div>
 
             <div className="flex-row centered sm-gap">
-                <Button variant="danger" onClick={() => setRemoveUnselectedBtn(true)}>
-                    Remove Unselected
+                <Button variant="danger" onClick={() => setUpdateSelectedBtn(true)}>
+                    Update Selected
                 </Button>
 
                 <Button variant="success" onClick={() => setDisplayAllBtn(true)}>
