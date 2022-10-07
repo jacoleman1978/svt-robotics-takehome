@@ -9,6 +9,8 @@ Required functionality:
 
 ## Description
 
+[Deployed Web Application](https://svt-robotics-takehome.netlify.app/)
+
 Data is fetched from the API and stored in state until the webpage is refreshed. After the data is retrieved, a boolean property called "isDisplayed" is added to each robot object in the array and set to true.
 
 The top section of the webpage is a filter section that takes robotIds in the format of "3-7, 10, 14-21". When the "Display" button is clicked, only those robots with the ids entered will be displayed, if they exist. At the beginning of each row of data, there is a switch button that toggles whether the row should be displayed or hidden. The row won't be hidden until the user presses the "Update Selected" button. The user can click on the "Display All" button to display all robots, including hidden ones. At that point the switches can be individually toggled and then updated again with the "Update Selected" button.
